@@ -1,0 +1,814 @@
+{
+  "version": "P04-additive-v1",
+  "coordinate_convention": "normalized top-left displayed bbox [x0,y0,x1,y1]",
+  "calculation_metadata": {
+    "source_basis": "printed_area|calibrated_geometry|mixed",
+    "requested_method": "auto|printed|geometry",
+    "operation": "single_room|sum|indoor_floor_total",
+    "scope": {
+      "operation": "single_room",
+      "ids": [
+        "2.01"
+      ]
+    },
+    "terms": [
+      {
+        "room_id": "string",
+        "page_index": 0,
+        "value_m2": 0.0,
+        "source_method": "printed_area|calibrated_geometry",
+        "evidence_ids": []
+      }
+    ],
+    "included_room_ids": [],
+    "excluded_rooms": [
+      {
+        "room_id": "string",
+        "reason": "source-derived classification",
+        "evidence_ids": []
+      }
+    ],
+    "missing_room_ids": [],
+    "scope_complete": false,
+    "calibration": {
+      "points_per_metre": null,
+      "scale_evidence_ids": [],
+      "interval_relative_disagreement": null,
+      "validated": false
+    }
+  },
+  "schemas": {
+    "Document": {
+      "$defs": {
+        "Page": {
+          "additionalProperties": false,
+          "properties": {
+            "page_index": {
+              "title": "Page Index",
+              "type": "integer"
+            },
+            "width": {
+              "title": "Width",
+              "type": "integer"
+            },
+            "height": {
+              "title": "Height",
+              "type": "integer"
+            },
+            "image_url": {
+              "title": "Image Url",
+              "type": "string"
+            },
+            "render_sha256": {
+              "title": "Render Sha256",
+              "type": "string"
+            },
+            "transform": {
+              "additionalProperties": true,
+              "title": "Transform",
+              "type": "object"
+            }
+          },
+          "required": [
+            "page_index",
+            "width",
+            "height",
+            "image_url",
+            "render_sha256",
+            "transform"
+          ],
+          "title": "Page",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "document_id": {
+          "title": "Document Id",
+          "type": "string"
+        },
+        "sha256": {
+          "title": "Sha256",
+          "type": "string"
+        },
+        "media_type": {
+          "title": "Media Type",
+          "type": "string"
+        },
+        "pages": {
+          "items": {
+            "$ref": "#/$defs/Page"
+          },
+          "title": "Pages",
+          "type": "array"
+        }
+      },
+      "required": [
+        "document_id",
+        "sha256",
+        "media_type",
+        "pages"
+      ],
+      "title": "Document",
+      "type": "object"
+    },
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence_id": {
+          "title": "Evidence Id",
+          "type": "string"
+        },
+        "document_id": {
+          "title": "Document Id",
+          "type": "string"
+        },
+        "source_sha256": {
+          "title": "Source Sha256",
+          "type": "string"
+        },
+        "page_index": {
+          "minimum": 0,
+          "title": "Page Index",
+          "type": "integer"
+        },
+        "bbox": {
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 4,
+          "minItems": 4,
+          "title": "Bbox",
+          "type": "array"
+        },
+        "method": {
+          "enum": [
+            "native",
+            "model_proposed"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "original_text": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Original Text"
+        },
+        "native_rect": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "number"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Native Rect"
+        },
+        "transform": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Transform"
+        },
+        "polygon": {
+          "anyOf": [
+            {
+              "items": {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Polygon"
+        },
+        "polygon_native": {
+          "anyOf": [
+            {
+              "items": {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Polygon Native"
+        },
+        "role": {
+          "anyOf": [
+            {
+              "enum": [
+                "room_boundary",
+                "room_label",
+                "area_label",
+                "scale_bar"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Role"
+        }
+      },
+      "required": [
+        "evidence_id",
+        "document_id",
+        "source_sha256",
+        "page_index",
+        "bbox",
+        "method"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "Detection": {
+      "additionalProperties": false,
+      "properties": {
+        "detection_id": {
+          "title": "Detection Id",
+          "type": "string"
+        },
+        "category": {
+          "title": "Category",
+          "type": "string"
+        },
+        "evidence_id": {
+          "title": "Evidence Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "detection_id",
+        "category",
+        "evidence_id"
+      ],
+      "title": "Detection",
+      "type": "object"
+    },
+    "QueryRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "document_ids": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 1,
+          "minItems": 1,
+          "title": "Document Ids",
+          "type": "array"
+        },
+        "question": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Question",
+          "type": "string"
+        },
+        "page_index": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Page Index"
+        },
+        "page_indices": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "integer"
+              },
+              "maxItems": 4,
+              "minItems": 1,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Page Indices"
+        },
+        "mode": {
+          "default": "auto",
+          "enum": [
+            "auto",
+            "direct_vlm",
+            "native"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "runtime_model": {
+          "default": "gpt-6.1-sol",
+          "enum": [
+            "gpt-6.1-sol",
+            "gpt-6-luna"
+          ],
+          "title": "Runtime Model",
+          "type": "string"
+        },
+        "use_cache": {
+          "default": true,
+          "title": "Use Cache",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "document_ids",
+        "question"
+      ],
+      "title": "QueryRequest",
+      "type": "object"
+    },
+    "Answer": {
+      "$defs": {
+        "Detection": {
+          "additionalProperties": false,
+          "properties": {
+            "detection_id": {
+              "title": "Detection Id",
+              "type": "string"
+            },
+            "category": {
+              "title": "Category",
+              "type": "string"
+            },
+            "evidence_id": {
+              "title": "Evidence Id",
+              "type": "string"
+            }
+          },
+          "required": [
+            "detection_id",
+            "category",
+            "evidence_id"
+          ],
+          "title": "Detection",
+          "type": "object"
+        },
+        "Evidence": {
+          "additionalProperties": false,
+          "properties": {
+            "evidence_id": {
+              "title": "Evidence Id",
+              "type": "string"
+            },
+            "document_id": {
+              "title": "Document Id",
+              "type": "string"
+            },
+            "source_sha256": {
+              "title": "Source Sha256",
+              "type": "string"
+            },
+            "page_index": {
+              "minimum": 0,
+              "title": "Page Index",
+              "type": "integer"
+            },
+            "bbox": {
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 4,
+              "minItems": 4,
+              "title": "Bbox",
+              "type": "array"
+            },
+            "method": {
+              "enum": [
+                "native",
+                "model_proposed"
+              ],
+              "title": "Method",
+              "type": "string"
+            },
+            "original_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Original Text"
+            },
+            "native_rect": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "number"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Native Rect"
+            },
+            "transform": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Transform"
+            },
+            "polygon": {
+              "anyOf": [
+                {
+                  "items": {
+                    "items": {
+                      "type": "number"
+                    },
+                    "type": "array"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Polygon"
+            },
+            "polygon_native": {
+              "anyOf": [
+                {
+                  "items": {
+                    "items": {
+                      "type": "number"
+                    },
+                    "type": "array"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Polygon Native"
+            },
+            "role": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "room_boundary",
+                    "room_label",
+                    "area_label",
+                    "scale_bar"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "title": "Role"
+            }
+          },
+          "required": [
+            "evidence_id",
+            "document_id",
+            "source_sha256",
+            "page_index",
+            "bbox",
+            "method"
+          ],
+          "title": "Evidence",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "run_id": {
+          "title": "Run Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "answered",
+            "needs_review",
+            "unsupported",
+            "error"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value"
+        },
+        "unit": {
+          "default": "unknown",
+          "enum": [
+            "count",
+            "m2",
+            "m",
+            "m3",
+            "text",
+            "unknown"
+          ],
+          "title": "Unit",
+          "type": "string"
+        },
+        "basis": {
+          "default": "unknown",
+          "enum": [
+            "printed_area",
+            "model_visual",
+            "native_text",
+            "calculated",
+            "unknown"
+          ],
+          "title": "Basis",
+          "type": "string"
+        },
+        "source_evidence_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Source Evidence Ids",
+          "type": "array"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "detections": {
+          "items": {
+            "$ref": "#/$defs/Detection"
+          },
+          "title": "Detections",
+          "type": "array"
+        },
+        "raw_model_count": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Raw Model Count"
+        },
+        "evidence_tally": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence Tally"
+        },
+        "counting_rule": {
+          "default": "",
+          "title": "Counting Rule",
+          "type": "string"
+        },
+        "assumptions": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Assumptions",
+          "type": "array"
+        },
+        "missing_inputs": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Missing Inputs",
+          "type": "array"
+        },
+        "verification": {
+          "default": "none",
+          "enum": [
+            "native_source",
+            "calculated_from_source",
+            "model_proposed_unverified",
+            "none"
+          ],
+          "title": "Verification",
+          "type": "string"
+        },
+        "metadata": {
+          "additionalProperties": true,
+          "title": "Metadata",
+          "type": "object"
+        }
+      },
+      "required": [
+        "run_id",
+        "status"
+      ],
+      "title": "Answer",
+      "type": "object"
+    },
+    "ProviderAnswer": {
+      "$defs": {
+        "ProposedBox": {
+          "additionalProperties": false,
+          "properties": {
+            "page_index": {
+              "title": "Page Index",
+              "type": "integer"
+            },
+            "bbox": {
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 4,
+              "minItems": 4,
+              "title": "Bbox",
+              "type": "array"
+            },
+            "category": {
+              "title": "Category",
+              "type": "string"
+            },
+            "original_text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Original Text"
+            }
+          },
+          "required": [
+            "page_index",
+            "bbox",
+            "category",
+            "original_text"
+          ],
+          "title": "ProposedBox",
+          "type": "object"
+        }
+      },
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "answered",
+            "needs_review",
+            "unsupported"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Value"
+        },
+        "unit": {
+          "enum": [
+            "count",
+            "m2",
+            "m",
+            "m3",
+            "text",
+            "unknown"
+          ],
+          "title": "Unit",
+          "type": "string"
+        },
+        "basis": {
+          "enum": [
+            "printed_area",
+            "model_visual",
+            "unknown"
+          ],
+          "title": "Basis",
+          "type": "string"
+        },
+        "detections": {
+          "items": {
+            "$ref": "#/$defs/ProposedBox"
+          },
+          "title": "Detections",
+          "type": "array"
+        },
+        "detections_complete": {
+          "title": "Detections Complete",
+          "type": "boolean"
+        },
+        "counting_rule": {
+          "title": "Counting Rule",
+          "type": "string"
+        },
+        "assumptions": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Assumptions",
+          "type": "array"
+        },
+        "missing_inputs": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Missing Inputs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "status",
+        "value",
+        "unit",
+        "basis",
+        "detections",
+        "detections_complete",
+        "counting_rule",
+        "assumptions",
+        "missing_inputs"
+      ],
+      "title": "ProviderAnswer",
+      "type": "object"
+    }
+  }
+}

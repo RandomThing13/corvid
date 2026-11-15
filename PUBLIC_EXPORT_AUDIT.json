@@ -1,0 +1,342 @@
+{
+  "status": "PASS",
+  "scope": "Every exported file byte-scanned; PDF text also scanned; audit report independently scanned after creation",
+  "files_excluding_this_report": 51,
+  "inventory": [
+    {
+      "path": ".gitignore",
+      "bytes": 189,
+      "sha256": "c0b8f6f7d24c9093fbd17abadf207468295cd2e81e9dff1000d34c5459ffb573",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5091,
+      "sha256": "17d44aad04a4d60ee97556ffdf5bb474377f862e95c622e7e19cfef2cd7cec12",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "app/__init__.py",
+      "bytes": 70,
+      "sha256": "3aa8f457af4e38e3da645b4587cf317743e464546f1aecfabe9238d304c14a86",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "app/area.py",
+      "bytes": 8168,
+      "sha256": "712146fe4c65991a19f536f12ab92bcb2c8623d0757d6d084c4dc00cd9770693",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "app/build.py",
+      "bytes": 1461,
+      "sha256": "25cf58409e9fc9310ccfe7a0cc447eee4237e234db96031015550f988f465cf5",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "app/documents.py",
+      "bytes": 3931,
+      "sha256": "335b730f20b9731fb6eed0d1e69ab7cfc1bf19dfbcaad4b82cbd9c1ac568a1b2",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "app/geometry.py",
+      "bytes": 5902,
+      "sha256": "075400b0b87a360c32d8b2b7b00c06f088e586ac3378f54b1a00c7d97aef9986",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "app/ingest.py",
+      "bytes": 7679,
+      "sha256": "31c2fa498c4ad9c73a90e8084ded5cef38fe7433b38456451ef79b4d851f2843",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "app/limits.py",
+      "bytes": 1109,
+      "sha256": "cf6f81589c2570bdaf1a9354ec22e11d8d8ba4506cf7f79699fa151282ead72a",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "app/main.py",
+      "bytes": 3758,
+      "sha256": "0bef5532c88c33bad00014470c0b75c00d555ffeb6f4e8d64131e02c197a8e6a",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "app/provider.py",
+      "bytes": 6553,
+      "sha256": "21ded0c549fa35f533c50679af1ce5ca348de9124520e492d66fcae2aa694fc2",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "app/query.py",
+      "bytes": 4953,
+      "sha256": "7bc483ccdf4d4831b440ee3e8448a87e1336ab76cc99f58fd268d756d53b37eb",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "app/rooms.py",
+      "bytes": 9222,
+      "sha256": "30901eb568087fd266cb241b28d1b3659df3cfd330bfccc2482d394ce65679cd",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "app/schemas.py",
+      "bytes": 3957,
+      "sha256": "530a6ce2f14943dd5faf61ad644a18ec25aab7b4c779cb023ea7192ea255d707",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "app/static/app.js",
+      "bytes": 27461,
+      "sha256": "5b48b3cd345094f92a8d7bb043220b7f9610e1774af5d7052ad2194a450ffb9c",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "app/static/demo.html",
+      "bytes": 2788,
+      "sha256": "89342513c51ec5353e563f2df4679e030921dd8304c4bd22748b1cf19935f7b1",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "app/static/examples/LICENSE.md",
+      "bytes": 1148,
+      "sha256": "da883c8a96459fc869fb08734e54fe514e173440e253953bbf0a0ea373d61ba5",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "app/static/examples/site1000_bldg2082_floor9385.pdf",
+      "bytes": 73246,
+      "sha256": "8ceeb96b401643c177d59d729d61582449f71412983240a4f789cf91c31730d5",
+      "secret_scan": "passed",
+      "pdf_text_scanned": true
+    },
+    {
+      "path": "app/static/examples/site2293_bldg3380_floor15055.pdf",
+      "bytes": 53937,
+      "sha256": "9c158c02b2a6135417c598ff953866ae41749ca7821c8282b8fe92fe241e888d",
+      "secret_scan": "passed",
+      "pdf_text_scanned": true
+    },
+    {
+      "path": "app/static/index.html",
+      "bytes": 5372,
+      "sha256": "5832e53acb962ea6842f25d7138addf48b32140f108c6023dba6dd2242ec9755",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "app/static/styles.css",
+      "bytes": 12554,
+      "sha256": "58b411fc1bc680ea9339ec3a719e7b65139f5f89474608355f213865dd419956",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "app/storage.py",
+      "bytes": 2569,
+      "sha256": "13fbae1ddff6b0b7528499e805dc11b6dc39617b13cb782c6826fa3630cea441",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "data/raw/junction-dataset-preview/data/swiss_dwellings/LICENSE.md",
+      "bytes": 1148,
+      "sha256": "da883c8a96459fc869fb08734e54fe514e173440e253953bbf0a0ea373d61ba5",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "data/raw/junction-dataset-preview/data/swiss_dwellings/site1000_bldg2082_floor9385.pdf",
+      "bytes": 73246,
+      "sha256": "8ceeb96b401643c177d59d729d61582449f71412983240a4f789cf91c31730d5",
+      "secret_scan": "passed",
+      "pdf_text_scanned": true
+    },
+    {
+      "path": "data/raw/junction-dataset-preview/data/swiss_dwellings/site2293_bldg3380_floor15055.pdf",
+      "bytes": 53937,
+      "sha256": "9c158c02b2a6135417c598ff953866ae41749ca7821c8282b8fe92fe241e888d",
+      "secret_scan": "passed",
+      "pdf_text_scanned": true
+    },
+    {
+      "path": "data/raw/junction-dataset-preview/data/swiss_dwellings/site4085_bldg6548_floor26706.pdf",
+      "bytes": 38324,
+      "sha256": "f1c2566f32ee6f5a2175f1f34c6e3ae784c692f44fd25796944167037ac6d0fc",
+      "secret_scan": "passed",
+      "pdf_text_scanned": true
+    },
+    {
+      "path": "deployment/__init__.py",
+      "bytes": 77,
+      "sha256": "057b95d8d520f51123ce76c1f753e28ae7ae592ab8e040f92501cc6b5b38d56a",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "deployment/export_ledger.py",
+      "bytes": 1054,
+      "sha256": "d6531ff117852835850e335310e7e615b76b8fb7c9634276afbaf56204575efe",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "deployment/gates.py",
+      "bytes": 1561,
+      "sha256": "acc6caec4a976c3d244eb1fdb501647e243bb897c6e8bba56233d2ce57355da4",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "deployment/ledger.py",
+      "bytes": 4117,
+      "sha256": "e1f4273f4539703759f839e1f2b7b740794eae7260ed1e052fc2db115068a4d4",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "deployment/ledger_admin.py",
+      "bytes": 2648,
+      "sha256": "7d76a6a1949ec592eb7ac69abf76ebe40b247689ba75b2a64cd03909199d87f0",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "deployment/prepare_corvid.py",
+      "bytes": 1621,
+      "sha256": "66f2a19784f1795f853bff5bed1c15fb8c9ff51b50ca169f0ff29092f84dc73c",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "deployment/prepare_image.py",
+      "bytes": 967,
+      "sha256": "e3bceed14477abf396669d5a756c14f274080137590a7034112a13ef0512f57c",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "deployment/prepare_secret.py",
+      "bytes": 1162,
+      "sha256": "8432f6464e6f67e2282bcee81e78563f92981a05221514d42cee267a5b62f164",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "deployment/requirements.txt",
+      "bytes": 12021,
+      "sha256": "aa3820ee9df029c924f69611065fac64971dde4f676c009e2705cdcaed489f54",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "deployment/runtime-manifest.json",
+      "bytes": 2037,
+      "sha256": "a67504608ed99de293520e594dbec2126a88764e26b0807c66d66f195c8b6835",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "deployment/runtime.py",
+      "bytes": 2116,
+      "sha256": "91f58b7975ce413959cb27799ad055c03067b57117856e964ac70811fc3c7fc5",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "deployment/sample-guide.html",
+      "bytes": 1318,
+      "sha256": "8c74883bd0172b88b2fb22f9f9acbc9f6b65af88188f04a4e0450547e2ec9736",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "deployment/tests/test_deployment.py",
+      "bytes": 1883,
+      "sha256": "8e2e01120e25661ffccb592960b41ca5dd2a3416004b0a475d074884dad6588e",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "deployment/tests/test_runtime.py",
+      "bytes": 2866,
+      "sha256": "b8f0ee862012dc3f353d885d732a4e6751bb049dfebbeab90b01807fd200992c",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "docs/contracts.json",
+      "bytes": 18910,
+      "sha256": "3f84fc46c23641ca92bc3fe5d93fb675f63de27fb675897e4d310deb3facb6af",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "modal_app.py",
+      "bytes": 2603,
+      "sha256": "da7330ffb1f508d2339d37ccb90c66b47852722b047e1815c2194bf41b5d085f",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 555,
+      "sha256": "aa15efeef4cff3d40277ccf4b5fdd20a312dbb45774f9df696a2909d11e0c207",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "scripts/benchmark.py",
+      "bytes": 1544,
+      "sha256": "bab4544e579c561d35d2ef8346dc889e2b3e3ff9a64cc52d0b60d78add3f79bf",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "tests/conftest.py",
+      "bytes": 360,
+      "sha256": "3a147a5ec6c06d5acf6ecdbeb0cf2c9632a23576d44fa5b072a04417dedf9ea0",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "tests/test_corvid.py",
+      "bytes": 4084,
+      "sha256": "c5b41743913f93653f5239229c5235a83920fc25f62ead3397d65b352251ef80",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "tests/test_native.py",
+      "bytes": 5984,
+      "sha256": "093f3cb4efdc2fb40a0f6e41293d8fa1e3fc8eed8a5fb17e6cd82ea2bc9524a1",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "tests/test_p01.py",
+      "bytes": 11732,
+      "sha256": "eb3ac9d8518b699fb9a7de4bb0c1b9f5b2b14c6bf5c96d28e2785ae1087d01ea",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "tests/test_p02.py",
+      "bytes": 10656,
+      "sha256": "6dde6c87d1b084e83bc18bf9b9f404aa092815758c8d4c01a06f0f56dcb02edd",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "tests/test_p04.py",
+      "bytes": 5253,
+      "sha256": "3edca52e0d690712dfe6c0912f49e87e7d7dd5b1b05dff2c559b17c816aad3bc",
+      "secret_scan": "passed"
+    },
+    {
+      "path": "uv.lock",
+      "bytes": 50424,
+      "sha256": "78b3fb1846b12591a795ee5a7caf57c629d8d1a79afdabb8c4629ea8e3c0b045",
+      "secret_scan": "passed"
+    }
+  ],
+  "checks": [
+    "explicit source allowlist",
+    "no symlinks",
+    "no dotenv or credential files",
+    "no databases or private evaluation payloads",
+    "no caches or archives",
+    "no file above2MiB",
+    "exact existing local credential comparison without disclosure",
+    "OpenAI/AWS/GitHub/Slack/private-key/JWT pattern scans"
+  ],
+  "public_pdf_fixtures": "Three unique licensed Swiss Dwellings development PDFs; two duplicated under static/examples for demo links. No full dataset.",
+  "tests": {
+    "pytest": "88 passed,1 skipped,11 warnings",
+    "isolated_deployment": "5 passed"
+  },
+  "copy_only_adjustments": [
+    "Separate corvid-public Modal resource names",
+    "Pure scoring/payload helpers only; private evaluator runner omitted",
+    "Skip absent historical evaluation-membership fixture"
+  ],
+  "original_project_modified": false,
+  "model_calls": 0,
+  "publishing_or_deployment": false,
+  "limitations": "Automated secret checks are not a formal security guarantee. Synthetic test credentials and public source-derived numeric fixtures are intentional. Software license selection remains with the owner."
+}

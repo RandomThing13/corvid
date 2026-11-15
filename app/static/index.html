@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Corvid - Drawing evidence</title>
+<meta name="description" content="Inspect source-backed drawing answers, printed area calculations and calibrated PDF geometry with Corvid.">
+<link rel="stylesheet" href="/static/styles.css">
+<script src="/static/app.js" defer></script>
+</head>
+<body>
+<header class="app-header"><a class="brand" href="/" aria-label="Corvid home"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M5 6h15l4 5-8 1-1 12-5-8L5 6Zm10 6 5-6M10 16l6-4"/></svg>corvid<span>DRAWING EVIDENCE</span></a><div class="header-meta"><span class="local-tag" id="workspaceContext"><i></i> Shared demonstration</span><a class="guide-link" href="/static/demo.html">Demo guide <span aria-hidden="true">↗</span></a></div></header>
+<main class="workspace">
+<section class="drawing" aria-label="Drawing viewer">
+<div class="drawing-toolbar"><div class="document-title"><span class="eyebrow">SOURCE DOCUMENT</span><strong id="filename">No drawing loaded</strong></div><label class="upload-button" for="file">Upload drawing<input id="file" type="file" accept=".pdf,.png,.jpg,.jpeg,application/pdf,image/png,image/jpeg"></label></div>
+<div class="pagebar"><label for="pages">Viewing</label><select id="pages" disabled aria-label="Select drawing page"><option>Page -</option></select><span id="pageSize"></span><span class="source-tag">Original page image</span></div>
+<div id="viewport" class="viewport">
+<svg id="drawingSvg" xmlns="http://www.w3.org/2000/svg" role="group" aria-label="Source drawing and interactive evidence" hidden><image id="pageImage" x="0" y="0"/><g id="shapes"></g></svg>
+<div id="emptyDrawing" class="empty-drawing"><svg viewBox="0 0 80 80" aria-hidden="true"><path d="M16 64V16h48v48H16Zm0-32h25V16m0 16v32m0-16h23M25 23h7M49 56h7"/></svg><h1>Your drawing, grounded answers.</h1><p>Upload a source to inspect its pages<br>and trace each answer back to the drawing.</p><label class="primary-upload" for="file">Choose a drawing <span aria-hidden="true">↗</span></label><small>PDF, PNG or JPEG · Up to 25 MiB</small></div>
+<div id="imageError" class="image-error" hidden>Page image could not load. Upload the source again to recover.</div>
+</div>
+<div class="viewer-footer"><span id="viewerHint">Evidence stays linked to its source.</span><div class="zoom-controls"><button id="fitPage" disabled>Fit page</button><button id="fitEvidence" disabled>Fit evidence</button><span class="separator"></span><button id="zoomOut" disabled aria-label="Zoom out">−</button><output id="zoom">100%</output><button id="zoomIn" disabled aria-label="Zoom in">+</button></div></div>
+</section>
+<aside class="panel" aria-label="Question and evidence">
+<div class="panel-intro"><span class="eyebrow">DRAWING INTELLIGENCE</span><h1>Ask. Inspect. Verify.</h1><p>Answers with a place in the source.</p></div>
+<form id="questionForm" class="question-form"><div class="label-line"><label for="question">Your question</label><span id="scope">Question scope: no page</span></div><textarea id="question" rows="3" maxlength="4000" placeholder="e.g. What is the printed area of room 2.01?" disabled required></textarea><button id="submit" class="primary" disabled type="submit">Ask drawing <span aria-hidden="true">↗</span></button><p class="form-note">Queries use the selected page. Select another page to change scope.</p></form>
+<p id="localPreview" class="local-preview" hidden>This is a native-only local preview. <a href="https://kilman-augustus--stoa-evidence-web.us-east.modal.run/">Open permanent Corvid for model queries ↗</a></p>
+<div id="notice" class="notice" role="status" aria-live="polite">Upload a drawing to get started.</div>
+<section id="result" hidden aria-label="Answer"><div class="section-heading"><h2>Answer</h2><span id="status" class="status"></span></div><div id="answerCard" class="answer-card"><div id="verification" class="verification"></div><p id="candidate" class="candidate" hidden>Candidate - requires review</p><div id="answerValue" class="answer-value"></div><div id="calculationInline" class="calculation-inline" hidden aria-label="Source calculation"></div><p id="answerScope" class="answer-scope"></p><p id="basis" class="basis"></p><p id="explanation"></p><div id="qualifications"></div><div class="telemetry"><span id="elapsed"></span><span id="cost"></span></div></div>
+<div class="section-heading evidence-heading"><h2>Source evidence</h2><span id="evidenceCount" class="muted"></span></div><p id="evidenceHelp" class="form-note">Select a source to focus the drawing.</p><ol id="evidenceList" class="evidence-list"></ol>
+<details id="calculation" hidden open><summary>Calculation &amp; source details</summary><div id="calculationBody"></div></details>
+<details id="sourceDetails"><summary>Source &amp; audit</summary><div id="audit"></div></details>
+</section>
+<details class="reopen"><summary>Reopen a run</summary><form id="runForm"><label for="runId">Run ID for the loaded source</label><div class="run-input"><input id="runId" placeholder="Paste a returned run ID" required><button id="openRun" type="submit" disabled>Open</button></div></form></details>
+<footer class="panel-footer"><span>CORVID</span><span>Built for the Stoa challenge</span></footer>
+</aside>
+</main>
+</body>
+</html>
